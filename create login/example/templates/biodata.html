@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if user.is_authenticated %}
+    <br>
+    <h1>Welcome to Biodata Of All Users</h1>
+    
+    {% for object in objects %}
+        <br>
+        <h1>Name: <strong>{{object.name}}</strong></h1>
+        <h2>Email: {{ object.email }}</h2>
+        <h2>Phone: {{ object.phone }}</h2>
+        <br>
+    {% endfor %}
+
+{% else %}
+    <h1>Please login and see Biodata</h1>
+{% endif %}
+
+
+{% endblock %}

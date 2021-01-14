@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+  
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #e3f2fd;">
+            <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"><a class="nav-link" href="{% url 'biodata' %}">Biodata <span class="sr-only">(current)</span></a></li>
+              </ul>
+              <ul class="navbar-nav mr">
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+                {% endif %}  
+              </ul>
+          </nav>
+          {% for message in messages %}
+              <h1>{{message}}</h1>
+          {% endfor %}    
+    </div>
+        
+    <div class="container">
+      {% block content %}
+
+      {% endblock %}
+    </div>
+          
+          <script src="" async defer></script>
+    </body>
+</html>
